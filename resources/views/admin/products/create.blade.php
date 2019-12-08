@@ -59,7 +59,7 @@
 
                                 <div class="form-group{{ $errors->has('discount') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-discount">{{ __('Discount') }}</label>
-                                    <input min="5" type="number" name="discount" id="input-discount" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Discount') }}" value="{{ old('discount') }} %" required>
+                                    <input min="5" type="number" name="discount" id="input-discount" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Discount') }}" value="{{ old('discount') }}" required>
 
                                     @include('alerts.feedback', ['field' => 'discount'])
                                 </div>

@@ -70,6 +70,31 @@
           </ul>
         </div>
       </li>
+      <li>
+        <a data-toggle="collapse" href="#products">
+            <i class="fas fa-users"></i>
+          <p>
+            {{ __("Products") }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="products">
+          <ul class="nav">
+            <li class="@if ($activePage == 'newproduct') active @endif">
+              <a href="{{ route('products.create') }}">
+                <i class="now-ui-icons users_single-02"></i>
+                <p> {{ __("New Product") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'products') active @endif">
+              <a href="{{ route('products.index') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Products Management") }} </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
       <li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>

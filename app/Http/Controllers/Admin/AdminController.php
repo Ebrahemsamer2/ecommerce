@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Http\Requests\AdminRequest;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {   
@@ -24,37 +25,42 @@ class AdminController extends Controller
         return view('admin.admins.create');
     }
     
-    public function store(AdminRequest $request, Admin $admin)
-    {
-        dd($admin);
-        
+    public function store(UserRequest $request, User $admin)
+    {   
         $admin->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
         return redirect()->route('admins.index')->withStatus(__('Admin successfully created.'));
     }
 
-    public function show(Admin $admin)
+    public function show(User $admin)
     {
         // 
     }
 
-    public function edit(Admin $admin)
+    public function edit(User $admin)
     {
         return view('admin.admins.edit', compact('admin'));
     }
 
-    public function update(AdminRequest $request, Admin $admin)
-    {
-        $hasPassword = $request->get('password');
+    public function update(Request $request, User $admin)
+    {   
+        $rules = [
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+        ];
+        
+        $this->validate($request, $rules);
+
+        $hashPassword = $request->get('password');
         $admin->update(
             $request->merge([
                 'password' => Hash::make($request->get('password'))
-                ])->except([$hasPassword ? '' : 'password'])
+                ])->except([$hashPassword ? '' : 'password'])
             );
 
         return redirect()->route('admins.index')->withStatus(__('Admin successfully updated.'));
     }
 
-    public function destroy(Admin $admin)
+    public function destroy(User $admin)
     {
         $admin_image = $admin->image;
         if($admin_image) {

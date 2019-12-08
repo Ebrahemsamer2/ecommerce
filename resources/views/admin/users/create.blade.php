@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
     'namePage' => 'Create user',
-    'activePage' => 'user',
+    'activePage' => 'newuser',
     'activeNav' => '',
 ])
 
@@ -26,7 +26,7 @@
                         <form method="post" action="{{ route('users.store') }}" autocomplete="off"
                             enctype="multipart/form-data">
                             @csrf
-
+                            <input type="hidden" value="0" name="admin">
                             <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

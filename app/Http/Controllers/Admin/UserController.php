@@ -6,13 +6,14 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
 
     public function index(User $model)
     {
-        return view('admin.users.index', ['users' => $model->users()->paginate(15)]);
+        return view('admin.users.index', ['users' => $model->users()->orderBy('id', 'desc')->paginate(15)]);
     }
 
     public function create()
@@ -22,7 +23,6 @@ class UserController extends Controller
 
     public function store(UserRequest $request, User $model)
     {
-        dd($model);
         $model->create($request->merge(['password' => Hash::make($request->get('password'))])->all());
         return redirect()->route('users.index')->withStatus(__('User successfully created.'));
     }
@@ -32,13 +32,20 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(UserRequest $request, User $user)
+    public function update(Request $request, User $user)
     {
-        $hasPassword = $request->get('password');
+        $rules = [
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+        ];
+        
+        $this->validate($request, $rules);
+
+        $hashPassword = $request->get('password');
         $user->update(
             $request->merge([
                 'password' => Hash::make($request->get('password'))
-                ])->except([$hasPassword ? '' : 'password'])
+                ])->except([$hashPassword ? '' : 'password'])
             );
 
         return redirect()->route('users.index')->withStatus(__('User successfully updated.'));

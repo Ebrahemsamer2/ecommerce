@@ -1,7 +1,7 @@
 @extends('layouts.app', [
     'class' => 'sidebar-mini ',
     'namePage' => 'Create admin',
-    'activePage' => 'admin',
+    'activePage' => 'newadmin',
     'activeNav' => '',
 ])
 
@@ -22,11 +22,12 @@
                             </div>
                         </div>
                     </div>
+                    @include('alerts.errors')
                     <div class="card-body">
                         <form method="post" action="{{ route('admins.store') }}" autocomplete="off"
                             enctype="multipart/form-data">
                             @csrf
-
+                            <input type="hidden" value="1" name="admin">
                             <h6 class="heading-small text-muted mb-4">{{ __('Admin information') }}</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">

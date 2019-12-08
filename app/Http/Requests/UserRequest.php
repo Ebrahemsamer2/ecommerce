@@ -24,7 +24,10 @@ class UserRequest extends FormRequest
             ],
             'password' => [
                 $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
-            ]
+            ],
+            'admin' => [
+                'required', 'integer', 'in:0,1',
+            ],
         ];
     }
 }

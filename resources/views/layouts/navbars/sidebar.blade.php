@@ -3,10 +3,10 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+    <a href="/admin" class="simple-text logo-mini">
       {{ __('EC') }}
     </a>
-    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+    <a href="/admin" class="simple-text logo-normal">
       {{ __('e-Commerce') }}
     </a>
   </div>
@@ -18,30 +18,58 @@
           <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      @if(auth()->user()->is_super)
       <li>
-        <a data-toggle="collapse" href="#laravelExamples">
-            <i class="fab fa-laravel"></i>
+        <a data-toggle="collapse" href="#admins">
+            <i class="fas fa-user-secret"></i>
           <p>
-            {{ __("Laravel Examples") }}
+            {{ __("Admins") }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse show" id="laravelExamples">
+        <div class="collapse" id="admins">
           <ul class="nav">
-            <li class="@if ($activePage == 'profile') active @endif">
-              <a href="{{ route('profile.edit') }}">
+            <li class="@if ($activePage == 'newadmin') active @endif">
+              <a href="{{ route('admins.create') }}">
                 <i class="now-ui-icons users_single-02"></i>
-                <p> {{ __("User Profile") }} </p>
+                <p> {{ __("New Admin") }} </p>
+              </a>
+            </li>
+            <li class="@if ($activePage == 'admins') active @endif">
+              <a href="{{ route('admins.index') }}">
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p> {{ __("Admins Management") }} </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      @endif
+      <li>
+        <a data-toggle="collapse" href="#users">
+            <i class="fas fa-users"></i>
+          <p>
+            {{ __("Users") }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse" id="users">
+          <ul class="nav">
+            <li class="@if ($activePage == 'newuser') active @endif">
+              <a href="{{ route('users.create') }}">
+                <i class="now-ui-icons users_single-02"></i>
+                <p> {{ __("New User") }} </p>
               </a>
             </li>
             <li class="@if ($activePage == 'users') active @endif">
               <a href="{{ route('users.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
-                <p> {{ __("User Management") }} </p>
+                <p> {{ __("Users Management") }} </p>
               </a>
             </li>
           </ul>
         </div>
+      </li>
       <li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>

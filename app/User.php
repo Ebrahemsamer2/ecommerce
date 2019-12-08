@@ -19,6 +19,10 @@ class User extends Authenticatable
         return $query->where('admin', 1);
     }
 
+    public function scopeSupers($query) {
+        return $query->where('is_super', 1);
+    }
+
     protected $fillable = [
         'name', 'email', 'password','admin','is_super',
     ];

@@ -4,16 +4,16 @@
 -->
   <div class="logo">
     <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-      {{ __('CT') }}
+      {{ __('EC') }}
     </a>
     <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+      {{ __('e-Commerce') }}
     </a>
   </div>
   <div class="sidebar-wrapper" id="sidebar-wrapper">
     <ul class="nav">
-      <li class="@if ($activePage == 'home') active @endif">
-        <a href="{{ route('home') }}">
+      <li class="@if ($activePage == 'dashboard') active @endif">
+        <a href="{{ route('dashboard') }}">
           <i class="now-ui-icons design_app"></i>
           <p>{{ __('Dashboard') }}</p>
         </a>
@@ -35,7 +35,7 @@
               </a>
             </li>
             <li class="@if ($activePage == 'users') active @endif">
-              <a href="{{ route('user.index') }}">
+              <a href="{{ route('users.index') }}">
                 <i class="now-ui-icons design_bullet-list-67"></i>
                 <p> {{ __("User Management") }} </p>
               </a>
@@ -70,12 +70,6 @@
         <a href="{{ route('page.index','typography') }}">
           <i class="now-ui-icons text_caps-small"></i>
           <p>{{ __('Typography') }}</p>
-        </a>
-      </li>
-      <li class = "@if ($activePage == 'upgrade') active @endif active-pro">
-        <a href="{{ route('page.index','upgrade') }}">
-          <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-          <p>{{ __('Upgrade to PRO') }}</p>
         </a>
       </li>
     </ul>

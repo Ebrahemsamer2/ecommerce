@@ -26,11 +26,7 @@
             </div>
         </div>
         <div class="col-md-4 ml-auto mr-auto">
-            @isset($url)
-            <form role="form" method="POST" action='{{ url("login/$url") }}'>
-            @else
             <form role="form" method="POST" action="{{ route('login') }}">
-            @endisset
                 @csrf
             <div class="card card-login card-plain">
                 <div class="card-header ">

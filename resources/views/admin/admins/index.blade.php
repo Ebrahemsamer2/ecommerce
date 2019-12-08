@@ -1,7 +1,7 @@
 @extends('layouts.app', [
-    'namePage' => 'Users',
+    'namePage' => 'Admins',
     'class' => 'sidebar-mini',
-    'activePage' => 'users',
+    'activePage' => 'admins',
     'activeNav' => '',
 ])
 
@@ -13,8 +13,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-              <a class="btn btn-primary btn-round text-white pull-right" href="{{ route('user.create') }}">{{ __('Add user') }}</a>
-            <h4 class="card-title">{{ __('Users') }}</h4>
+              <a class="btn btn-primary btn-round text-white pull-right" href="{{ route('admins.create') }}">{{ __('Add admin') }}</a>
+            <h4 class="card-title">{{ __('Admins') }}</h4>
             <div class="col-12 mt-2">
               @include('alerts.success')
               @include('alerts.errors')
@@ -44,25 +44,25 @@
                 </tr>
               </tfoot>
               <tbody>
-                @foreach($users as $user)
+                @foreach($admins as $admin)
                   <tr>
                     <td>
                       <span class="avatar avatar-sm rounded-circle">
                         <img src="{{asset('assets')}}/img/default-avatar.png" alt="" style="max-width: 80px; border-radiu: 100px">
                       </span>
                     </td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{ $user->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{$admin->name}}</td>
+                    <td>{{$admin->email}}</td>
+                    <td>{{ $admin->created_at->format('d/m/Y H:i') }}</td>
                       <td class="text-right">
-                      @if($user->id!=auth()->user()->id)
-                        <a type="button" href="{{route("user.edit",$user)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
+                      @if($admin->id!=auth()->user()->id)
+                        <a type="button" href="{{route("admins.edit",$admin)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
                           <i class="now-ui-icons ui-2_settings-90"></i>
                         </a>
-                      <form action="{{ route('user.destroy', $user) }}" method="post" style="display:inline-block;" class ="delete-form">
+                      <form action="{{ route('admins.destroy', $admin) }}" method="post" style="display:inline-block;" class ="delete-form">
                         @csrf
                         @method('delete')
-                        <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm delete-button" data-original-title="" title="" onclick="confirm('{{ __('Are you sure you want to delete this user?') }}') ? this.parentElement.submit() : ''">
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm delete-button" data-original-title="" title="" onclick="confirm('{{ __('Are you sure you want to delete this admin?') }}') ? this.parentElement.submit() : ''">
                           <i class="now-ui-icons ui-1_simple-remove"></i>
                         </button>
                       </form>

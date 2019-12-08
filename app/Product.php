@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = ['name', 'description', 'quantity', 'price'];
+
+
+    // Relationships functions
     
+    public function photo() {
+        return $this->morphOne('App\Photo', 'photoable');
+    }
 }

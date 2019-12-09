@@ -1,33 +1,3 @@
-/*!
-
- =========================================================
- * Now UI Dashboard - v1.3.0
- =========================================================
-
- * Product Page: https://www.creative-tim.com/product/now-ui-dashboard-laravel
- * Copyright 2019 Creative Tim (http://www.creative-tim.com) & Updivision (https://updivision.com)
-
- * Designed by www.invisionapp.com Coded by www.creative-tim.com & https://updivision.com
-
- =========================================================
-
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
- */
-
-(function() {
-    isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
-
-    if (isWindows) {
-        // if we are on windows OS we activate the perfectScrollbar function
-        var ps = new PerfectScrollbar('.sidebar-wrapper');
-        var ps2 = new PerfectScrollbar('.main-panel');
-
-        $('html').addClass('perfect-scrollbar-on');
-    } else {
-        $('html').addClass('perfect-scrollbar-off');
-    }
-})();
 
 transparent = true;
 transparentDemo = true;

@@ -66,7 +66,7 @@
 
                                 <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-image">{{ __('Image') }}</label>
-                                    <input min="5" type="number" name="image" id="input-image" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" required>
+                                    <input min="5" type="file" name="image" id="input-image" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}" required>
 
                                     @include('alerts.feedback', ['field' => 'image'])
                                 </div>

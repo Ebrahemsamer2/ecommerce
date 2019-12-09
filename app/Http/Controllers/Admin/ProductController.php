@@ -34,7 +34,7 @@ class ProductController extends Controller
         
         $this->validate($request, $rules);
 
-        $data = $request->all()->except(['image']);
+        $data = $request->except(['image']);
 
         $product = Product::create($data);
 
@@ -43,7 +43,7 @@ class ProductController extends Controller
             $filename = $file->getClientOriginalName();
             $file_extension = $file->getClientOriginalExtension();
 
-            $file_to_store = time() .'_'.explode('.', $filename)[0].'_.'.$file_extension;
+            $file_to_store = time() .'_'.explode('.', $filename)[0].'.'.$file_extension;
 
             if($file->move('images', $file_to_store)) {
                 Photo::create(['filename' => $file_to_store,'photoable_id' => $product->id, 'photoable_type' => 'App\Product']);
@@ -92,12 +92,12 @@ class ProductController extends Controller
             $filename = $file->getClientOriginalName();
             $file_extension = $file->getClientOriginalExtension();
 
-            $file_to_store = time() .'_'.explode('.', $filename)[0].'_.'.$file_extension;
+            $file_to_store = time() .'_'.explode('.', $filename)[0].'.'.$file_extension;
 
             //  update filename to the new image.
             //  delete the old image from server
-            
-            $product_image = $product->image;
+
+            $product_image = $product->photo;
             if($product_image) {
                 if(file_exists('images/' . $product_image->filename)) {
                     unlink('images/'.$product_image->filename);
@@ -118,7 +118,7 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        $product_image = $product->image;
+        $product_image = $product->photo;
         if($product_image) {
             $product_image->delete();
             if(file_exists('images/' . $product_image->filename)) {
@@ -126,6 +126,6 @@ class ProductController extends Controller
             }
         }
         $product->delete();
-        return view('admin.products.index')->withStatus('Prodcut successfully deleted.');
+        return redirect('/admin/products')->withStatus('Product successfully deleted.');
     }
 }

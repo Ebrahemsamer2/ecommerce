@@ -97,7 +97,7 @@
       </li>
 
       <li class = " @if ($activePage == 'categories') active @endif">
-        <a href="{{ route('categories.index','table') }}">
+        <a href="{{ route('categories.index') }}">
           <i class="now-ui-icons design_bullet-list-67"></i>
           <p>{{ __('Categories') }}</p>
         </a>

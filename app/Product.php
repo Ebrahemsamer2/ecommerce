@@ -14,4 +14,9 @@ class Product extends Model
     public function photo() {
         return $this->morphOne('App\Photo', 'photoable');
     }
+
+    public function category() {
+    	return $this->belongsTo('App\Category');
+    }
+    
 }

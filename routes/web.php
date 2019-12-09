@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth', 'adminsonly']], function () {
     Route::resource('admin/admins', 'Admin\AdminController');
 
     Route::resource('admin/products', 'Admin\ProductController');
+
+    Route::resource('admin/categories', 'Admin\CategoryController');
 	
     Route::get('admin/profile', ['as' => 'profile.edit', 'uses' => 'Admin\ProfileController@edit']);
 	

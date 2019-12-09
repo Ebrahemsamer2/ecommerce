@@ -72,7 +72,7 @@
       </li>
       <li>
         <a data-toggle="collapse" href="#products">
-            <i class="fas fa-users"></i>
+            <i class="fas fa-shopping-cart"></i>
           <p>
             {{ __("Products") }}
             <b class="caret"></b>
@@ -95,6 +95,14 @@
           </ul>
         </div>
       </li>
+
+      <li class = " @if ($activePage == 'categories') active @endif">
+        <a href="{{ route('categories.index','table') }}">
+          <i class="now-ui-icons design_bullet-list-67"></i>
+          <p>{{ __('Categories') }}</p>
+        </a>
+      </li>
+
       <li class="@if ($activePage == 'icons') active @endif">
         <a href="{{ route('page.index','icons') }}">
           <i class="now-ui-icons education_atom"></i>

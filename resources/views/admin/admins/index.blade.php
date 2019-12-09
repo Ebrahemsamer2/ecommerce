@@ -53,7 +53,7 @@
                     </td>
                     <td>{{$admin->name}}</td>
                     <td>{{$admin->email}}</td>
-                    <td>{{ $admin->created_at->format('d/m/Y H:i') }}</td>
+                    <td>{{ $admin->created_at->diffForHumans() }}</td>
                       <td class="text-right">
                       @if($admin->id!=auth()->user()->id)
                         <a type="button" href="{{route("admins.edit",$admin)}}" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">

@@ -1,27 +1,7 @@
 /* Starting admin style */
 
-.all-products .product-detail {
-    text-align: center;
-    border: 1px solid #e5e5e5;
-    border-radius: 0.1875rem;
-    margin: 15px 0;
-    min-height: 168px;
-}
+/* Constants */
 
-.all-products [class*="now-ui-icons"] {
-    font-size: 32px;
-}
-
-.all-products .product-detail p {
-    margin: 25px auto 0;
-    width: 100%;
-    text-align: center;
-    display: block;
-    color: #B8B8B8;
-    padding:0;
-    font-size: 0.7142em;
-}
-
-.all-products .product-detail p {
-	color: #929292;
+table tbody tr td {
+	text-align: center;
 }

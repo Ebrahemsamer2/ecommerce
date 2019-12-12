@@ -34,15 +34,6 @@
                   <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
                 </tr>
               </thead>
-              <tfoot>
-                <tr>
-                  <th>{{ __('Profile') }}</th>
-                  <th>{{ __('Name') }}</th>
-                  <th>{{ __('Email') }}</th>
-                  <th>{{ __('Creation date') }}</th>
-                  <th class="disabled-sorting text-right">{{ __('Actions') }}</th>
-                </tr>
-              </tfoot>
               <tbody>
                 @foreach($admins as $admin)
                   <tr>

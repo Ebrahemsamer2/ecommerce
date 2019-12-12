@@ -43,7 +43,19 @@
 
                                     @include('alerts.feedback', ['field' => 'description'])
                                 </div>
-                                
+                                    
+                                <div class="form-group{{ $errors->has('category_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-category_id">{{ __('Category') }}</label>
+                                    <select name="category_id" id="input-category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required>
+                                        <option value="0">Select Category</option>
+                                        @foreach(\App\Category::orderBy('id', 'desc')->get() as $category)
+                                            <option <?php if($product->category_id == $category->id) echo 'selected'; ?>>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @include('alerts.feedback', ['field' => 'category_id'])
+                                </div>
+
                                 <div class="form-group{{ $errors->has('quantity') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-quantity">{{ __('Quantity') }}</label>
                                     <input min="1" type="number" name="quantity" id="input-quantity" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Quantity') }}" value="{{ $product->quantity }}" required>
@@ -53,14 +65,14 @@
 
                                 <div class="form-group{{ $errors->has('price') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-price">{{ __('Price') }}</label>
-                                    <input min="5" type="number" name="price" id="input-price" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Price') }}" value="{{ $product->price }}" required>
+                                    <input min="5" type="number" name="price" id="input-price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" placeholder="{{ __('Price') }}" value="{{ $product->price }}" required>
 
                                     @include('alerts.feedback', ['field' => 'price'])
                                 </div>
 
                                 <div class="form-group{{ $errors->has('discount') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-discount">{{ __('Discount') }}</label>
-                                    <input min="5" type="number" name="discount" id="input-discount" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Discount') }}" value="{{ $product->discount }} %" required>
+                                    <input min="5" type="number" name="discount" id="input-discount" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Discount') }}" value="{{ $product->discount }}">
 
                                     @include('alerts.feedback', ['field' => 'discount'])
                                 </div>

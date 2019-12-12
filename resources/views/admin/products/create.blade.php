@@ -43,6 +43,18 @@
                                     @include('alerts.feedback', ['field' => 'description'])
                                 </div>
                                 
+                                <div class="form-group{{ $errors->has('category_id') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-category_id">{{ __('Category') }}</label>
+                                    <select name="category_id" id="input-category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required>
+                                        <option value="0">Select Category</option>
+                                        @foreach(\App\Category::orderBy('id', 'desc')->get() as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @include('alerts.feedback', ['field' => 'category_id'])
+                                </div>
+                                
                                 <div class="form-group{{ $errors->has('quantity') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-quantity">{{ __('Quantity') }}</label>
                                     <input min="1" type="number" name="quantity" id="input-quantity" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }}" placeholder="{{ __('Quantity') }}" value="{{ old('quantity') }}" required>

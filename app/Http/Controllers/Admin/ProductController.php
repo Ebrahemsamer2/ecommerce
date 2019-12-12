@@ -28,6 +28,7 @@ class ProductController extends Controller
             'name' => 'required|min:5|max:50',
             'description' => 'required|min:20|max:500',
             'quantity' => 'required|min:1|integer',
+            'category_id' => 'required|integer|min:1',
             'price' => 'required|integer|min:5',
             'image' => 'required|image',
         ];
@@ -67,6 +68,7 @@ class ProductController extends Controller
         $rules = [
             'name' => 'required|min:5|max:50',
             'description' => 'required|min:20|max:500',
+            'category_id' => 'required|min:1|integer',
             'quantity' => 'required|min:1|integer',
             'price' => 'required|integer|min:5',
         ];
@@ -79,13 +81,18 @@ class ProductController extends Controller
         if($request->has('description')) {
             $product->description = $request->description;
         }
+        if($request->has('category_id')) {
+            $product->category_id = $request->category_id;
+        }
         if($request->has('quantity')) {
             $product->quantity = $request->quantity;
         }
         if($request->has('price')) {
             $product->price = $request->price;
         }
-
+        if($request->has('discount')) {
+            $product->discount = $request->discount;
+        }
 
         if($file = $request->file('image')) {
 
@@ -108,7 +115,8 @@ class ProductController extends Controller
             }
         }
 
-        if($product->isDirty()) {
+        if($product->isDirty() || $product->photo->isDirty()) {
+            $product->photo->save();
             $product->save();
             return redirect('/admin/products')->withStatus('Prodcut successfully updated.');
         }else {

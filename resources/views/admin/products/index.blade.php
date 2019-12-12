@@ -39,7 +39,7 @@
                           @if(file_exists('images/'.$product->photo->filename))
                             <img width="150" src="/images/{{$product->photo->filename}}">
                           @else
-                            <img src="/images/placeholder.jpg">
+                            <img width="150" src="/images/placeholder.jpg">
                           @endif
                         @endif
                       </td>

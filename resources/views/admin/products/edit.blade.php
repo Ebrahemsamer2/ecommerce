@@ -49,7 +49,7 @@
                                     <select name="category_id" id="input-category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}" required>
                                         <option value="0">Select Category</option>
                                         @foreach(\App\Category::orderBy('id', 'desc')->get() as $category)
-                                            <option <?php if($product->category_id == $category->id) echo 'selected'; ?>>{{ $category->name }}</option>
+                                            <option <?php if($product->category_id == $category->id) echo 'selected'; ?> value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
 
@@ -79,7 +79,7 @@
 
                                 <div class="form-group{{ $errors->has('image') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-image">{{ __('Image') }}</label>
-                                    <input min="5" type="number" name="image" id="input-image" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}">
+                                    <input type="file" name="image" id="input-image" class="form-control{{ $errors->has('image') ? ' is-invalid' : '' }}">
 
                                     @include('alerts.feedback', ['field' => 'image'])
                                 </div>

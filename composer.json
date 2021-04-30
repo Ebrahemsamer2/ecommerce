@@ -13,7 +13,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel-frontend-presets/now-ui-dashboard": "^1.0",
         "laravel/cashier": "^10.5",
-        "laravel/framework": "5.8.*",
+        "laravel/framework": "6.20.*",
         "laravel/tinker": "^1.0"
     },
     "require-dev": {
